@@ -1,10 +1,17 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import LayoutShell from '@/components/LayoutShell'; // adjust path if needed
+import LayoutShell from '@/components/LayoutShell'; 
+import { Urbanist } from 'next/font/google';
 
-const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
-const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
+const urbanist = Urbanist({
+  subsets: ['latin'],
+  display: 'swap',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
+  adjustFontFallback: true
+});
+// adjust path if needed
+
 
 export const metadata: Metadata = {
   title: 'Azmth',
@@ -15,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
+        className={`${urbanist.className} antialiased bg-black text-white`}
       >
         <LayoutShell>{children}</LayoutShell>
       </body>
