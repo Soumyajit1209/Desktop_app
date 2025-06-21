@@ -16,7 +16,7 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
       {/* Sidebar */}
       <aside className="w-64 bg-[#1a1a1a] p-4 flex flex-col justify-between">
         <div>
-          <h1 className="text-xl font-bold mb-6">azmth</h1>
+          <h1 className="text-2xl font-semibold mb-6">azmth</h1>
 
           <nav className="space-y-2 mb-6">
             {navLinks.map(({ label, href }) => (
