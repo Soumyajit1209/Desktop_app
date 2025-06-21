@@ -1,9 +1,7 @@
-
-
-export default function Home() {
+export default function LandingPage() {
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }} className="text-cyan-300 items-center justify-center flex h-screen">
-        i have a new app
-    </div>
+    <main className="flex items-center justify-center min-h-screen bg-black text-white text-3xl">
+      Welcome to Azmth 🧠
+    </main>
   );
 }
