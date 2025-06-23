@@ -9,7 +9,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    
     "electron": "electron .",
     "electron-dev": "concurrently \"next dev\" \"wait-on http://localhost:3000 && cross-env ELECTRON_IS_DEV=true electron .\"",
     "electron-pack": "electron-builder",
@@ -18,6 +17,7 @@
     "dist": "npm run build && electron-builder --publish=always"
   },
   "dependencies": {
+    "lucide-react": "^0.522.0",
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
