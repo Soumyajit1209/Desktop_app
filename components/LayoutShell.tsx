@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { Plus } from "lucide-react";
 
@@ -16,6 +16,7 @@ export default function LayoutShell({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <div className="flex min-h-screen">
@@ -33,7 +34,7 @@ export default function LayoutShell({
                   href={href}
                   className={`block py-2 px-3 rounded ${
                     isActive
-                      ? "bg-[#000] font-bold"
+                      ? "bg-black font-bold"
                       : "bg-[#2a2a2a] hover:bg-[#3a3a3a]"
                   }`}
                 >
@@ -41,18 +42,25 @@ export default function LayoutShell({
                 </Link>
               );
             })}
-          </nav>
 
-          <div className="space-y-2">
-            <button className="flex items-center justify-center w-full p-2 bg-[#2a2a2a] rounded hover:bg-[#3a3a3a]">
+            {/* + Button Tab */}
+            <button
+              onClick={() => router.push("/create-ai")}
+              className={`flex items-center justify-center w-full p-2 rounded ${
+                pathname === "/create-ai"
+                  ? "bg-black"
+                  : "bg-[#2a2a2a] hover:bg-[#3a3a3a]"
+              }`}
+            >
               <Plus className="w-4 h-4 text-white" />
             </button>
-          </div>
+          </nav>
         </div>
 
         <div className="text-center text-xl">⌄</div>
       </aside>
 
+      {/* Right Area */}
       <main className="flex-1 p-10">{children}</main>
     </div>
   );
