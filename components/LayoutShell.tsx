@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const navLinks = [
   { label: 'Train', href: '/train' },
-  { label: 'Chat', href: '/chat' },
+  { label: 'Clone', href: '/clone' },
 ];
 
 export default function LayoutShell({ children }: { children: React.ReactNode }) {

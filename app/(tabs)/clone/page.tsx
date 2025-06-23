@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-export default function TrainPage() {
+export default function ClonePage() {
   const [messages, setMessages] = useState<{ text: string; type: 'user' | 'bot' }[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -16,7 +16,7 @@ export default function TrainPage() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/chat', {
+      const response = await fetch('http://localhost:5000/api/clone-chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: userMessage }),
@@ -39,7 +39,7 @@ export default function TrainPage() {
       {/* Chat Messages */}
       <div className="flex-1 overflow-y-auto space-y-4 p-4 bg-[#1a1a1a] rounded">
         {messages.length === 0 ? (
-          <div className="text-gray-500 text-center mt-10">Train Chat</div>
+          <div className="text-gray-500 text-center mt-10">Clone Chat</div>
         ) : (
           messages.map((msg, idx) => (
             <div
