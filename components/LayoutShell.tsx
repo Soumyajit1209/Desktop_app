@@ -56,8 +56,6 @@ export default function LayoutShell({
             </button>
           </nav>
         </div>
-
-        <div className="text-center text-xl">⌄</div>
       </aside>
 
       {/* Right Area */}
