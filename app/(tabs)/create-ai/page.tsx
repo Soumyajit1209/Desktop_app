@@ -1,9 +1,13 @@
 "use client";
 
+import { useState } from "react";
+import Popup from "@/components/Popup";
+
 export default function CreateAI() {
+  const [showPopup, setShowPopup] = useState(false);
+
   return (
     <div className="space-y-4">
-      
       <div className="bg-[#2a2a2a] rounded p-4 space-y-4">
         <h2 className="text-lg font-bold text-white">Choose your AI</h2>
 
@@ -21,10 +25,14 @@ export default function CreateAI() {
       </div>
 
       {/* Make Your Custom AI Button */}
-      <button className="w-full p-4 bg-blue-600 rounded hover:bg-blue-700 text-white text-lg">
+      <button
+        className="w-full p-4 bg-blue-600 rounded hover:bg-blue-700 text-white text-lg"
+        onClick={() => setShowPopup(true)}
+      >
         Make your custom AI
       </button>
-      
+
+      {showPopup && <Popup onClose={() => setShowPopup(false)} />}
     </div>
   );
 }
