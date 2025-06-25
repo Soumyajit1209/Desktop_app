@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import WithLifeForm from "./WithLifeForm";
 
 interface PopupProps {
   onClose: () => void;
@@ -8,6 +9,7 @@ interface PopupProps {
 
 export default function Popup({ onClose }: PopupProps) {
   const popupRef = useRef<HTMLDivElement>(null);
+  const [step, setStep] = useState<"main" | "withLife">("main");
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (popupRef.current && !popupRef.current.contains(e.target as Node)) {
@@ -22,7 +24,7 @@ export default function Popup({ onClose }: PopupProps) {
     >
       <div
         ref={popupRef}
-        className="relative bg-[#2a2a2a] p-6 rounded space-y-4 w-80 text-center"
+        className="relative bg-[#2a2a2a] p-6 rounded space-y-4 w-[600px] text-white"
       >
         {/* Close Button Top-Right */}
         <button
@@ -32,16 +34,25 @@ export default function Popup({ onClose }: PopupProps) {
           ×
         </button>
 
-        <h2 className="text-lg font-bold text-white mb-4">Create Your AI</h2>
+        {step === "main" ? (
+          <>
+            <h2 className="text-lg font-bold mb-4 text-center">Create Your AI</h2>
 
-        <div className="space-y-2">
-          <button className="w-full p-3 bg-green-600 rounded hover:bg-green-700 text-white">
-            With Life
-          </button>
-          <button className="w-full p-3 bg-red-600 rounded hover:bg-red-700 text-white">
-            Without Life
-          </button>
-        </div>
+            <div className="space-y-2">
+              <button
+                className="w-full p-3 bg-green-600 rounded hover:bg-green-700 text-white"
+                onClick={() => setStep("withLife")}
+              >
+                With Life
+              </button>
+              <button className="w-full p-3 bg-red-600 rounded hover:bg-red-700 text-white">
+                Without Life
+              </button>
+            </div>
+          </>
+        ) : (
+          <WithLifeForm goBack={() => setStep("main")} />
+        )}
       </div>
     </div>
   );
