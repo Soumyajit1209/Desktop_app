@@ -1,9 +1,16 @@
 "use client";
 
+import { ArrowLeft } from "lucide-react";
+
 export default function WithLifeForm({ goBack }: { goBack: () => void }) {
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-bold mb-4 text-center">Create AI With Life</h2>
+      <div className="flex items-center gap-2 mb-4">
+        <button onClick={goBack} className="text-gray-400 hover:text-white">
+          <ArrowLeft />
+        </button>
+        <h2 className="text-lg font-bold">Create AI With Life</h2>
+      </div>
 
       <div className="flex gap-4">
         {/* Character Column */}
@@ -37,13 +44,7 @@ export default function WithLifeForm({ goBack }: { goBack: () => void }) {
         </div>
       </div>
 
-      <div className="flex justify-between items-center mt-4">
-        <button
-          className="px-4 py-2 bg-gray-600 rounded hover:bg-gray-700 text-white"
-          onClick={goBack}
-        >
-          Back
-        </button>
+      <div className="flex justify-end mt-4">
         <button className="px-4 py-2 bg-blue-600 rounded hover:bg-blue-700 text-white">
           Submit
         </button>
